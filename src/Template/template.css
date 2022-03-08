@@ -1,0 +1,7 @@
+input[type=text] {
+    width: var(--width);
+}
+
+input [type="text"] {
+    background-color: black;
+}
