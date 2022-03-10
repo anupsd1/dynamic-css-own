@@ -21,16 +21,37 @@ class Template extends Component {
         document.querySelector(`.${id}`).style.setProperty('--width', "100px")
     }
 
+    increaseSize = (e) => {
+        const id = e.target.id.replace('button-', '')
+        const width = getComputedStyle(document.querySelector(`.${id}`)).getPropertyValue("--width")
+        const width_without_unit = width.replace("%", "")
+        const new_width = parseInt(width_without_unit) + 1;
+        console.log(new_width)
+        document.querySelector(`.${id}`).style.setProperty('--width', `${new_width}%`);
+        
+    }
+
+    decreaseSize = (e) => {
+        const id = e.target.id.replace('button-', '')
+        const width = getComputedStyle(document.querySelector(`.${id}`)).getPropertyValue("--width")
+        const width_without_unit = width.replace("%", "")
+        const new_width = parseInt(width_without_unit) - 1;
+        console.log(new_width)
+        document.querySelector(`.${id}`).style.setProperty('--width', `${new_width}%`);
+    }
+
     render() {
         return (
         <div>
             <div>
                 <TextBox classValue="textbox-1" />
-                <button id="button-textbox-1" onClick={this.changeSize}>Size 1</button>
+                <button id="button-textbox-1" onClick={this.increaseSize}>Size 1 Increase</button>
+                <button id="button-textbox-1" onClick={this.decreaseSize}>Size 1 Decrease</button>
+                
             </div>
             <div>
                 <TextBox classValue="textbox-2" />
-                <button id="button-textbox-2" onClick={this.changeSize}> size 2</button>
+                <button id="button-textbox-2" onClick={this.increaseSize}> size 2</button>
             </div>
         </div>
         
